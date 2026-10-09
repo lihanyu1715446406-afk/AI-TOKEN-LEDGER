@@ -1,0 +1,2189 @@
+{
+  "meta": {
+    "last_sync": "2026-10-09T00:00:00+00:00",
+    "version": "1.0",
+    "sample": true,
+    "note": "这是脱敏示例数据，不是真实用量。运行 run.ps1 / run.sh 会生成你自己的 dashboard.html。"
+  },
+  "date_range": {
+    "first": "2026-09-26",
+    "last": "2026-10-09",
+    "active_days": 13
+  },
+  "tools": {
+    "codex": {
+      "name": "Codex",
+      "status": "supported",
+      "record_unit": "会话日志",
+      "record_unit_desc": "当天有 Token 活动的会话日志文件（~/.codex/sessions/**/*.jsonl）",
+      "token_source": "token_count 事件的 total_token_usage 字段按时间序列增量计算"
+    },
+    "claude-code": {
+      "name": "Claude Code",
+      "status": "supported",
+      "record_unit": "对话文件",
+      "record_unit_desc": "当天有 Token 活动的对话 JSONL 文件（~/.claude/projects/**/*.jsonl，主会话或子代理）",
+      "token_source": "assistant message 的 usage 字段（input/output/cache_read/cache_creation），按单次请求值求和"
+    },
+    "cursor": {
+      "name": "Cursor",
+      "status": "activity_only",
+      "record_unit": "会话",
+      "record_unit_desc": "当天有活动的 Composer 会话（来自 state.vscdb 的 composerHeaders）",
+      "token_source": "Cursor 未在本地库中暴露 Token 字段，故只统计会话数与时间分布，不统计 Token",
+      "note": "Token统计未适配"
+    }
+  },
+  "totals": {
+    "codex": {
+      "input_tokens": 2520000,
+      "output_tokens": 336000,
+      "cache_tokens": 20300000,
+      "reasoning_tokens": 4480,
+      "total_tokens": 23160480,
+      "record_units": 14,
+      "active_days": 11
+    },
+    "claude-code": {
+      "input_tokens": 1196000,
+      "output_tokens": 494000,
+      "cache_tokens": 15340000,
+      "reasoning_tokens": 0,
+      "total_tokens": 17030000,
+      "record_units": 13,
+      "active_days": 11
+    },
+    "cursor": {
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cache_tokens": 0,
+      "reasoning_tokens": 0,
+      "total_tokens": 0,
+      "record_units": 3,
+      "active_days": 3
+    }
+  },
+  "summary": {
+    "all_input_tokens": 3716000,
+    "all_output_tokens": 830000,
+    "all_cache_tokens": 35640000,
+    "all_reasoning_tokens": 4480,
+    "all_record_units": 30,
+    "all_total_tokens": 40190480,
+    "active_days": 13,
+    "today_tokens": 1654320,
+    "avg_daily_tokens": 3091575
+  },
+  "daily": [
+    {
+      "date": "2026-09-26",
+      "tools": {
+        "codex": {
+          "input_tokens": 180000,
+          "output_tokens": 24000,
+          "cache_tokens": 1450000,
+          "reasoning_tokens": 320,
+          "total_tokens": 1654320,
+          "record_units": 1,
+          "sessions": [
+            {
+              "id": "019e0004c-7a21-4f0e-9b3d-demo0000...",
+              "workspace": "my-web-app",
+              "models": [
+                "gpt-5.5"
+              ],
+              "labels": [
+                "2轮对话",
+                "工具调用"
+              ],
+              "input_tokens": 180000,
+              "output_tokens": 24000,
+              "cache_tokens": 1450000,
+              "reasoning_tokens": 320,
+              "total_tokens": 1654320,
+              "start_ts": "2026-09-26T09:12:00+00:00",
+              "end_ts": "2026-09-26T11:40:00+00:00"
+            }
+          ],
+          "activity_rhythm": {
+            "first_activity": "09:10",
+            "last_activity": "19:45",
+            "estimated_active_minutes": 465,
+            "activity_segments": [
+              {
+                "start": "09:10",
+                "end": "11:45",
+                "duration_min": 155
+              },
+              {
+                "start": "13:10",
+                "end": "15:45",
+                "duration_min": 155
+              },
+              {
+                "start": "17:10",
+                "end": "19:45",
+                "duration_min": 155
+              }
+            ],
+            "hourly_peaks": [
+              {
+                "hour": "09:00",
+                "events": 1
+              },
+              {
+                "hour": "11:00",
+                "events": 1
+              },
+              {
+                "hour": "13:00",
+                "events": 1
+              },
+              {
+                "hour": "15:00",
+                "events": 1
+              },
+              {
+                "hour": "17:00",
+                "events": 1
+              },
+              {
+                "hour": "19:00",
+                "events": 1
+              }
+            ],
+            "peak_concurrent_units": 1,
+            "total_events": 6,
+            "unique_sessions": 1,
+            "note": "AI活动推算，不等于真人实际工时"
+          }
+        },
+        "claude-code": {
+          "input_tokens": 92000,
+          "output_tokens": 38000,
+          "cache_tokens": 1180000,
+          "reasoning_tokens": 0,
+          "total_tokens": 1310000,
+          "record_units": 1,
+          "sessions": [
+            {
+              "id": "a1f2000b-3c4d-45e6-8f70-demo0000...",
+              "workspace": "notes",
+              "models": [
+                "claude-sonnet-4-6"
+              ],
+              "labels": [
+                "主会话",
+                "模式:default",
+                "3次API请求"
+              ],
+              "input_tokens": 92000,
+              "output_tokens": 38000,
+              "cache_tokens": 1180000,
+              "reasoning_tokens": 0,
+              "total_tokens": 1310000,
+              "start_ts": "2026-09-26T14:05:00+00:00",
+              "end_ts": "2026-09-26T18:22:00+00:00"
+            }
+          ],
+          "activity_rhythm": null
+        }
+      },
+      "combined_rhythm": {
+        "first_activity": "09:10",
+        "last_activity": "19:45",
+        "estimated_active_minutes": 465,
+        "activity_segments": [
+          {
+            "start": "09:10",
+            "end": "11:45",
+            "duration_min": 155
+          },
+          {
+            "start": "13:10",
+            "end": "15:45",
+            "duration_min": 155
+          },
+          {
+            "start": "17:10",
+            "end": "19:45",
+            "duration_min": 155
+          }
+        ],
+        "hourly_peaks": [
+          {
+            "hour": "09:00",
+            "events": 1
+          },
+          {
+            "hour": "11:00",
+            "events": 1
+          },
+          {
+            "hour": "13:00",
+            "events": 1
+          },
+          {
+            "hour": "15:00",
+            "events": 1
+          },
+          {
+            "hour": "17:00",
+            "events": 1
+          },
+          {
+            "hour": "19:00",
+            "events": 1
+          }
+        ],
+        "peak_concurrent_units": 2,
+        "total_events": 10,
+        "unique_sessions": 2,
+        "note": "AI活动推算，不等于真人实际工时"
+      }
+    },
+    {
+      "date": "2026-09-27",
+      "tools": {
+        "claude-code": {
+          "input_tokens": 92000,
+          "output_tokens": 38000,
+          "cache_tokens": 1180000,
+          "reasoning_tokens": 0,
+          "total_tokens": 1310000,
+          "record_units": 1,
+          "sessions": [
+            {
+              "id": "a1f2010b-3c4d-45e6-8f70-demo0000...",
+              "workspace": "cli-tool",
+              "models": [
+                "claude-sonnet-4-6"
+              ],
+              "labels": [
+                "主会话",
+                "模式:default",
+                "3次API请求"
+              ],
+              "input_tokens": 92000,
+              "output_tokens": 38000,
+              "cache_tokens": 1180000,
+              "reasoning_tokens": 0,
+              "total_tokens": 1310000,
+              "start_ts": "2026-09-27T14:05:00+00:00",
+              "end_ts": "2026-09-27T18:22:00+00:00"
+            }
+          ],
+          "activity_rhythm": null
+        }
+      },
+      "combined_rhythm": {
+        "first_activity": "09:10",
+        "last_activity": "15:45",
+        "estimated_active_minutes": 310,
+        "activity_segments": [
+          {
+            "start": "09:10",
+            "end": "11:45",
+            "duration_min": 155
+          },
+          {
+            "start": "13:10",
+            "end": "15:45",
+            "duration_min": 155
+          }
+        ],
+        "hourly_peaks": [
+          {
+            "hour": "09:00",
+            "events": 1
+          },
+          {
+            "hour": "11:00",
+            "events": 1
+          },
+          {
+            "hour": "13:00",
+            "events": 1
+          },
+          {
+            "hour": "15:00",
+            "events": 1
+          }
+        ],
+        "peak_concurrent_units": 1,
+        "total_events": 4,
+        "unique_sessions": 1,
+        "note": "AI活动推算，不等于真人实际工时"
+      }
+    },
+    {
+      "date": "2026-09-28",
+      "tools": {
+        "codex": {
+          "input_tokens": 360000,
+          "output_tokens": 48000,
+          "cache_tokens": 2900000,
+          "reasoning_tokens": 640,
+          "total_tokens": 3308640,
+          "record_units": 2,
+          "sessions": [
+            {
+              "id": "019e0204c-7a21-4f0e-9b3d-demo0000...",
+              "workspace": "notes",
+              "models": [
+                "gpt-5.5"
+              ],
+              "labels": [
+                "2轮对话",
+                "工具调用"
+              ],
+              "input_tokens": 180000,
+              "output_tokens": 24000,
+              "cache_tokens": 1450000,
+              "reasoning_tokens": 320,
+              "total_tokens": 1654320,
+              "start_ts": "2026-09-28T09:12:00+00:00",
+              "end_ts": "2026-09-28T11:40:00+00:00"
+            },
+            {
+              "id": "019e0214c-7a21-4f0e-9b3d-demo0001...",
+              "workspace": "cli-tool",
+              "models": [
+                "gpt-5.5"
+              ],
+              "labels": [
+                "3轮对话",
+                "工具调用"
+              ],
+              "input_tokens": 180000,
+              "output_tokens": 24000,
+              "cache_tokens": 1450000,
+              "reasoning_tokens": 320,
+              "total_tokens": 1654320,
+              "start_ts": "2026-09-28T09:12:00+00:00",
+              "end_ts": "2026-09-28T12:40:00+00:00"
+            }
+          ],
+          "activity_rhythm": {
+            "first_activity": "09:10",
+            "last_activity": "19:45",
+            "estimated_active_minutes": 465,
+            "activity_segments": [
+              {
+                "start": "09:10",
+                "end": "11:45",
+                "duration_min": 155
+              },
+              {
+                "start": "13:10",
+                "end": "15:45",
+                "duration_min": 155
+              },
+              {
+                "start": "17:10",
+                "end": "19:45",
+                "duration_min": 155
+              }
+            ],
+            "hourly_peaks": [
+              {
+                "hour": "09:00",
+                "events": 2
+              },
+              {
+                "hour": "11:00",
+                "events": 2
+              },
+              {
+                "hour": "13:00",
+                "events": 2
+              },
+              {
+                "hour": "15:00",
+                "events": 2
+              },
+              {
+                "hour": "17:00",
+                "events": 2
+              },
+              {
+                "hour": "19:00",
+                "events": 2
+              }
+            ],
+            "peak_concurrent_units": 2,
+            "total_events": 12,
+            "unique_sessions": 2,
+            "note": "AI活动推算，不等于真人实际工时"
+          }
+        },
+        "claude-code": {
+          "input_tokens": 92000,
+          "output_tokens": 38000,
+          "cache_tokens": 1180000,
+          "reasoning_tokens": 0,
+          "total_tokens": 1310000,
+          "record_units": 1,
+          "sessions": [
+            {
+              "id": "a1f2020b-3c4d-45e6-8f70-demo0000...",
+              "workspace": "docs-site",
+              "models": [
+                "claude-sonnet-4-6"
+              ],
+              "labels": [
+                "主会话",
+                "模式:default",
+                "3次API请求"
+              ],
+              "input_tokens": 92000,
+              "output_tokens": 38000,
+              "cache_tokens": 1180000,
+              "reasoning_tokens": 0,
+              "total_tokens": 1310000,
+              "start_ts": "2026-09-28T14:05:00+00:00",
+              "end_ts": "2026-09-28T18:22:00+00:00"
+            }
+          ],
+          "activity_rhythm": null
+        }
+      },
+      "combined_rhythm": {
+        "first_activity": "09:10",
+        "last_activity": "19:45",
+        "estimated_active_minutes": 465,
+        "activity_segments": [
+          {
+            "start": "09:10",
+            "end": "11:45",
+            "duration_min": 155
+          },
+          {
+            "start": "13:10",
+            "end": "15:45",
+            "duration_min": 155
+          },
+          {
+            "start": "17:10",
+            "end": "19:45",
+            "duration_min": 155
+          }
+        ],
+        "hourly_peaks": [
+          {
+            "hour": "09:00",
+            "events": 2
+          },
+          {
+            "hour": "11:00",
+            "events": 2
+          },
+          {
+            "hour": "13:00",
+            "events": 2
+          },
+          {
+            "hour": "15:00",
+            "events": 2
+          },
+          {
+            "hour": "17:00",
+            "events": 2
+          },
+          {
+            "hour": "19:00",
+            "events": 2
+          }
+        ],
+        "peak_concurrent_units": 3,
+        "total_events": 16,
+        "unique_sessions": 3,
+        "note": "AI活动推算，不等于真人实际工时"
+      }
+    },
+    {
+      "date": "2026-09-29",
+      "tools": {
+        "codex": {
+          "input_tokens": 180000,
+          "output_tokens": 24000,
+          "cache_tokens": 1450000,
+          "reasoning_tokens": 320,
+          "total_tokens": 1654320,
+          "record_units": 1,
+          "sessions": [
+            {
+              "id": "019e0304c-7a21-4f0e-9b3d-demo0000...",
+              "workspace": "cli-tool",
+              "models": [
+                "gpt-5.5"
+              ],
+              "labels": [
+                "2轮对话",
+                "工具调用"
+              ],
+              "input_tokens": 180000,
+              "output_tokens": 24000,
+              "cache_tokens": 1450000,
+              "reasoning_tokens": 320,
+              "total_tokens": 1654320,
+              "start_ts": "2026-09-29T09:12:00+00:00",
+              "end_ts": "2026-09-29T11:40:00+00:00"
+            }
+          ],
+          "activity_rhythm": {
+            "first_activity": "09:10",
+            "last_activity": "19:45",
+            "estimated_active_minutes": 465,
+            "activity_segments": [
+              {
+                "start": "09:10",
+                "end": "11:45",
+                "duration_min": 155
+              },
+              {
+                "start": "13:10",
+                "end": "15:45",
+                "duration_min": 155
+              },
+              {
+                "start": "17:10",
+                "end": "19:45",
+                "duration_min": 155
+              }
+            ],
+            "hourly_peaks": [
+              {
+                "hour": "09:00",
+                "events": 1
+              },
+              {
+                "hour": "11:00",
+                "events": 1
+              },
+              {
+                "hour": "13:00",
+                "events": 1
+              },
+              {
+                "hour": "15:00",
+                "events": 1
+              },
+              {
+                "hour": "17:00",
+                "events": 1
+              },
+              {
+                "hour": "19:00",
+                "events": 1
+              }
+            ],
+            "peak_concurrent_units": 1,
+            "total_events": 6,
+            "unique_sessions": 1,
+            "note": "AI活动推算，不等于真人实际工时"
+          }
+        }
+      },
+      "combined_rhythm": {
+        "first_activity": "09:10",
+        "last_activity": "19:45",
+        "estimated_active_minutes": 465,
+        "activity_segments": [
+          {
+            "start": "09:10",
+            "end": "11:45",
+            "duration_min": 155
+          },
+          {
+            "start": "13:10",
+            "end": "15:45",
+            "duration_min": 155
+          },
+          {
+            "start": "17:10",
+            "end": "19:45",
+            "duration_min": 155
+          }
+        ],
+        "hourly_peaks": [
+          {
+            "hour": "09:00",
+            "events": 1
+          },
+          {
+            "hour": "11:00",
+            "events": 1
+          },
+          {
+            "hour": "13:00",
+            "events": 1
+          },
+          {
+            "hour": "15:00",
+            "events": 1
+          },
+          {
+            "hour": "17:00",
+            "events": 1
+          },
+          {
+            "hour": "19:00",
+            "events": 1
+          }
+        ],
+        "peak_concurrent_units": 1,
+        "total_events": 6,
+        "unique_sessions": 1,
+        "note": "AI活动推算，不等于真人实际工时"
+      }
+    },
+    {
+      "date": "2026-09-30",
+      "tools": {
+        "codex": {
+          "input_tokens": 180000,
+          "output_tokens": 24000,
+          "cache_tokens": 1450000,
+          "reasoning_tokens": 320,
+          "total_tokens": 1654320,
+          "record_units": 1,
+          "sessions": [
+            {
+              "id": "019e0404c-7a21-4f0e-9b3d-demo0000...",
+              "workspace": "docs-site",
+              "models": [
+                "gpt-5.5"
+              ],
+              "labels": [
+                "2轮对话",
+                "工具调用"
+              ],
+              "input_tokens": 180000,
+              "output_tokens": 24000,
+              "cache_tokens": 1450000,
+              "reasoning_tokens": 320,
+              "total_tokens": 1654320,
+              "start_ts": "2026-09-30T09:12:00+00:00",
+              "end_ts": "2026-09-30T11:40:00+00:00"
+            }
+          ],
+          "activity_rhythm": {
+            "first_activity": "09:10",
+            "last_activity": "19:45",
+            "estimated_active_minutes": 465,
+            "activity_segments": [
+              {
+                "start": "09:10",
+                "end": "11:45",
+                "duration_min": 155
+              },
+              {
+                "start": "13:10",
+                "end": "15:45",
+                "duration_min": 155
+              },
+              {
+                "start": "17:10",
+                "end": "19:45",
+                "duration_min": 155
+              }
+            ],
+            "hourly_peaks": [
+              {
+                "hour": "09:00",
+                "events": 1
+              },
+              {
+                "hour": "11:00",
+                "events": 1
+              },
+              {
+                "hour": "13:00",
+                "events": 1
+              },
+              {
+                "hour": "15:00",
+                "events": 1
+              },
+              {
+                "hour": "17:00",
+                "events": 1
+              },
+              {
+                "hour": "19:00",
+                "events": 1
+              }
+            ],
+            "peak_concurrent_units": 1,
+            "total_events": 6,
+            "unique_sessions": 1,
+            "note": "AI活动推算，不等于真人实际工时"
+          }
+        },
+        "claude-code": {
+          "input_tokens": 92000,
+          "output_tokens": 38000,
+          "cache_tokens": 1180000,
+          "reasoning_tokens": 0,
+          "total_tokens": 1310000,
+          "record_units": 1,
+          "sessions": [
+            {
+              "id": "a1f2040b-3c4d-45e6-8f70-demo0000...",
+              "workspace": "data-pipeline",
+              "models": [
+                "claude-sonnet-4-6"
+              ],
+              "labels": [
+                "主会话",
+                "模式:default",
+                "3次API请求"
+              ],
+              "input_tokens": 92000,
+              "output_tokens": 38000,
+              "cache_tokens": 1180000,
+              "reasoning_tokens": 0,
+              "total_tokens": 1310000,
+              "start_ts": "2026-09-30T14:05:00+00:00",
+              "end_ts": "2026-09-30T18:22:00+00:00"
+            }
+          ],
+          "activity_rhythm": null
+        },
+        "cursor": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_tokens": 0,
+          "reasoning_tokens": 0,
+          "total_tokens": 0,
+          "record_units": 1,
+          "sessions": [
+            {
+              "id": "c0m9040-11aa-42bb-93cc-demo0000...",
+              "workspace": "cli-tool",
+              "models": [],
+              "labels": [
+                "主会话",
+                "模式:agent",
+                "+120/-48行",
+                "2文件变更",
+                "上下文:18%"
+              ],
+              "input_tokens": 0,
+              "output_tokens": 0,
+              "cache_tokens": 0,
+              "reasoning_tokens": 0,
+              "total_tokens": 0,
+              "start_ts": "2026-09-30T08:30:00+00:00",
+              "end_ts": "2026-09-30T09:15:00+00:00",
+              "token_status": "未适配/需要确认"
+            }
+          ],
+          "activity_rhythm": null
+        }
+      },
+      "combined_rhythm": {
+        "first_activity": "09:10",
+        "last_activity": "19:45",
+        "estimated_active_minutes": 465,
+        "activity_segments": [
+          {
+            "start": "09:10",
+            "end": "11:45",
+            "duration_min": 155
+          },
+          {
+            "start": "13:10",
+            "end": "15:45",
+            "duration_min": 155
+          },
+          {
+            "start": "17:10",
+            "end": "19:45",
+            "duration_min": 155
+          }
+        ],
+        "hourly_peaks": [
+          {
+            "hour": "09:00",
+            "events": 2
+          },
+          {
+            "hour": "11:00",
+            "events": 2
+          },
+          {
+            "hour": "13:00",
+            "events": 2
+          },
+          {
+            "hour": "15:00",
+            "events": 2
+          },
+          {
+            "hour": "17:00",
+            "events": 2
+          },
+          {
+            "hour": "19:00",
+            "events": 2
+          }
+        ],
+        "peak_concurrent_units": 3,
+        "total_events": 12,
+        "unique_sessions": 3,
+        "note": "AI活动推算，不等于真人实际工时"
+      }
+    },
+    {
+      "date": "2026-10-01",
+      "tools": {
+        "claude-code": {
+          "input_tokens": 92000,
+          "output_tokens": 38000,
+          "cache_tokens": 1180000,
+          "reasoning_tokens": 0,
+          "total_tokens": 1310000,
+          "record_units": 1,
+          "sessions": [
+            {
+              "id": "a1f2050b-3c4d-45e6-8f70-demo0000...",
+              "workspace": "notes",
+              "models": [
+                "claude-sonnet-4-6"
+              ],
+              "labels": [
+                "主会话",
+                "模式:default",
+                "3次API请求"
+              ],
+              "input_tokens": 92000,
+              "output_tokens": 38000,
+              "cache_tokens": 1180000,
+              "reasoning_tokens": 0,
+              "total_tokens": 1310000,
+              "start_ts": "2026-10-01T14:05:00+00:00",
+              "end_ts": "2026-10-01T18:22:00+00:00"
+            }
+          ],
+          "activity_rhythm": null
+        }
+      },
+      "combined_rhythm": {
+        "first_activity": "09:10",
+        "last_activity": "15:45",
+        "estimated_active_minutes": 310,
+        "activity_segments": [
+          {
+            "start": "09:10",
+            "end": "11:45",
+            "duration_min": 155
+          },
+          {
+            "start": "13:10",
+            "end": "15:45",
+            "duration_min": 155
+          }
+        ],
+        "hourly_peaks": [
+          {
+            "hour": "09:00",
+            "events": 1
+          },
+          {
+            "hour": "11:00",
+            "events": 1
+          },
+          {
+            "hour": "13:00",
+            "events": 1
+          },
+          {
+            "hour": "15:00",
+            "events": 1
+          }
+        ],
+        "peak_concurrent_units": 1,
+        "total_events": 4,
+        "unique_sessions": 1,
+        "note": "AI活动推算，不等于真人实际工时"
+      }
+    },
+    {
+      "date": "2026-10-02",
+      "tools": {
+        "codex": {
+          "input_tokens": 360000,
+          "output_tokens": 48000,
+          "cache_tokens": 2900000,
+          "reasoning_tokens": 640,
+          "total_tokens": 3308640,
+          "record_units": 2,
+          "sessions": [
+            {
+              "id": "019e0604c-7a21-4f0e-9b3d-demo0000...",
+              "workspace": "data-pipeline",
+              "models": [
+                "gpt-5.5"
+              ],
+              "labels": [
+                "2轮对话",
+                "工具调用"
+              ],
+              "input_tokens": 180000,
+              "output_tokens": 24000,
+              "cache_tokens": 1450000,
+              "reasoning_tokens": 320,
+              "total_tokens": 1654320,
+              "start_ts": "2026-10-02T09:12:00+00:00",
+              "end_ts": "2026-10-02T11:40:00+00:00"
+            },
+            {
+              "id": "019e0614c-7a21-4f0e-9b3d-demo0001...",
+              "workspace": "notes",
+              "models": [
+                "gpt-5.5"
+              ],
+              "labels": [
+                "3轮对话",
+                "工具调用"
+              ],
+              "input_tokens": 180000,
+              "output_tokens": 24000,
+              "cache_tokens": 1450000,
+              "reasoning_tokens": 320,
+              "total_tokens": 1654320,
+              "start_ts": "2026-10-02T09:12:00+00:00",
+              "end_ts": "2026-10-02T12:40:00+00:00"
+            }
+          ],
+          "activity_rhythm": {
+            "first_activity": "09:10",
+            "last_activity": "19:45",
+            "estimated_active_minutes": 465,
+            "activity_segments": [
+              {
+                "start": "09:10",
+                "end": "11:45",
+                "duration_min": 155
+              },
+              {
+                "start": "13:10",
+                "end": "15:45",
+                "duration_min": 155
+              },
+              {
+                "start": "17:10",
+                "end": "19:45",
+                "duration_min": 155
+              }
+            ],
+            "hourly_peaks": [
+              {
+                "hour": "09:00",
+                "events": 2
+              },
+              {
+                "hour": "11:00",
+                "events": 2
+              },
+              {
+                "hour": "13:00",
+                "events": 2
+              },
+              {
+                "hour": "15:00",
+                "events": 2
+              },
+              {
+                "hour": "17:00",
+                "events": 2
+              },
+              {
+                "hour": "19:00",
+                "events": 2
+              }
+            ],
+            "peak_concurrent_units": 2,
+            "total_events": 12,
+            "unique_sessions": 2,
+            "note": "AI活动推算，不等于真人实际工时"
+          }
+        },
+        "claude-code": {
+          "input_tokens": 184000,
+          "output_tokens": 76000,
+          "cache_tokens": 2360000,
+          "reasoning_tokens": 0,
+          "total_tokens": 2620000,
+          "record_units": 2,
+          "sessions": [
+            {
+              "id": "a1f2060b-3c4d-45e6-8f70-demo0000...",
+              "workspace": "cli-tool",
+              "models": [
+                "claude-sonnet-4-6"
+              ],
+              "labels": [
+                "主会话",
+                "模式:default",
+                "3次API请求"
+              ],
+              "input_tokens": 92000,
+              "output_tokens": 38000,
+              "cache_tokens": 1180000,
+              "reasoning_tokens": 0,
+              "total_tokens": 1310000,
+              "start_ts": "2026-10-02T14:05:00+00:00",
+              "end_ts": "2026-10-02T18:22:00+00:00"
+            },
+            {
+              "id": "a1f2061b-3c4d-45e6-8f70-demo0001...",
+              "workspace": "docs-site",
+              "models": [
+                "claude-sonnet-4-6"
+              ],
+              "labels": [
+                "主会话",
+                "模式:default",
+                "4次API请求"
+              ],
+              "input_tokens": 92000,
+              "output_tokens": 38000,
+              "cache_tokens": 1180000,
+              "reasoning_tokens": 0,
+              "total_tokens": 1310000,
+              "start_ts": "2026-10-02T15:05:00+00:00",
+              "end_ts": "2026-10-02T19:22:00+00:00"
+            }
+          ],
+          "activity_rhythm": null
+        }
+      },
+      "combined_rhythm": {
+        "first_activity": "09:10",
+        "last_activity": "19:45",
+        "estimated_active_minutes": 465,
+        "activity_segments": [
+          {
+            "start": "09:10",
+            "end": "11:45",
+            "duration_min": 155
+          },
+          {
+            "start": "13:10",
+            "end": "15:45",
+            "duration_min": 155
+          },
+          {
+            "start": "17:10",
+            "end": "19:45",
+            "duration_min": 155
+          }
+        ],
+        "hourly_peaks": [
+          {
+            "hour": "09:00",
+            "events": 3
+          },
+          {
+            "hour": "11:00",
+            "events": 3
+          },
+          {
+            "hour": "13:00",
+            "events": 3
+          },
+          {
+            "hour": "15:00",
+            "events": 3
+          },
+          {
+            "hour": "17:00",
+            "events": 3
+          },
+          {
+            "hour": "19:00",
+            "events": 3
+          }
+        ],
+        "peak_concurrent_units": 3,
+        "total_events": 20,
+        "unique_sessions": 4,
+        "note": "AI活动推算，不等于真人实际工时"
+      }
+    },
+    {
+      "date": "2026-10-03",
+      "tools": {
+        "codex": {
+          "input_tokens": 180000,
+          "output_tokens": 24000,
+          "cache_tokens": 1450000,
+          "reasoning_tokens": 320,
+          "total_tokens": 1654320,
+          "record_units": 1,
+          "sessions": [
+            {
+              "id": "019e0704c-7a21-4f0e-9b3d-demo0000...",
+              "workspace": "notes",
+              "models": [
+                "gpt-5.5"
+              ],
+              "labels": [
+                "2轮对话",
+                "工具调用"
+              ],
+              "input_tokens": 180000,
+              "output_tokens": 24000,
+              "cache_tokens": 1450000,
+              "reasoning_tokens": 320,
+              "total_tokens": 1654320,
+              "start_ts": "2026-10-03T09:12:00+00:00",
+              "end_ts": "2026-10-03T11:40:00+00:00"
+            }
+          ],
+          "activity_rhythm": {
+            "first_activity": "09:10",
+            "last_activity": "19:45",
+            "estimated_active_minutes": 465,
+            "activity_segments": [
+              {
+                "start": "09:10",
+                "end": "11:45",
+                "duration_min": 155
+              },
+              {
+                "start": "13:10",
+                "end": "15:45",
+                "duration_min": 155
+              },
+              {
+                "start": "17:10",
+                "end": "19:45",
+                "duration_min": 155
+              }
+            ],
+            "hourly_peaks": [
+              {
+                "hour": "09:00",
+                "events": 1
+              },
+              {
+                "hour": "11:00",
+                "events": 1
+              },
+              {
+                "hour": "13:00",
+                "events": 1
+              },
+              {
+                "hour": "15:00",
+                "events": 1
+              },
+              {
+                "hour": "17:00",
+                "events": 1
+              },
+              {
+                "hour": "19:00",
+                "events": 1
+              }
+            ],
+            "peak_concurrent_units": 1,
+            "total_events": 6,
+            "unique_sessions": 1,
+            "note": "AI活动推算，不等于真人实际工时"
+          }
+        },
+        "claude-code": {
+          "input_tokens": 92000,
+          "output_tokens": 38000,
+          "cache_tokens": 1180000,
+          "reasoning_tokens": 0,
+          "total_tokens": 1310000,
+          "record_units": 1,
+          "sessions": [
+            {
+              "id": "a1f2070b-3c4d-45e6-8f70-demo0000...",
+              "workspace": "docs-site",
+              "models": [
+                "claude-sonnet-4-6"
+              ],
+              "labels": [
+                "主会话",
+                "模式:default",
+                "3次API请求"
+              ],
+              "input_tokens": 92000,
+              "output_tokens": 38000,
+              "cache_tokens": 1180000,
+              "reasoning_tokens": 0,
+              "total_tokens": 1310000,
+              "start_ts": "2026-10-03T14:05:00+00:00",
+              "end_ts": "2026-10-03T18:22:00+00:00"
+            }
+          ],
+          "activity_rhythm": null
+        }
+      },
+      "combined_rhythm": {
+        "first_activity": "09:10",
+        "last_activity": "19:45",
+        "estimated_active_minutes": 465,
+        "activity_segments": [
+          {
+            "start": "09:10",
+            "end": "11:45",
+            "duration_min": 155
+          },
+          {
+            "start": "13:10",
+            "end": "15:45",
+            "duration_min": 155
+          },
+          {
+            "start": "17:10",
+            "end": "19:45",
+            "duration_min": 155
+          }
+        ],
+        "hourly_peaks": [
+          {
+            "hour": "09:00",
+            "events": 1
+          },
+          {
+            "hour": "11:00",
+            "events": 1
+          },
+          {
+            "hour": "13:00",
+            "events": 1
+          },
+          {
+            "hour": "15:00",
+            "events": 1
+          },
+          {
+            "hour": "17:00",
+            "events": 1
+          },
+          {
+            "hour": "19:00",
+            "events": 1
+          }
+        ],
+        "peak_concurrent_units": 2,
+        "total_events": 10,
+        "unique_sessions": 2,
+        "note": "AI活动推算，不等于真人实际工时"
+      }
+    },
+    {
+      "date": "2026-10-05",
+      "tools": {
+        "codex": {
+          "input_tokens": 180000,
+          "output_tokens": 24000,
+          "cache_tokens": 1450000,
+          "reasoning_tokens": 320,
+          "total_tokens": 1654320,
+          "record_units": 1,
+          "sessions": [
+            {
+              "id": "019e0904c-7a21-4f0e-9b3d-demo0000...",
+              "workspace": "docs-site",
+              "models": [
+                "gpt-5.5"
+              ],
+              "labels": [
+                "2轮对话",
+                "工具调用"
+              ],
+              "input_tokens": 180000,
+              "output_tokens": 24000,
+              "cache_tokens": 1450000,
+              "reasoning_tokens": 320,
+              "total_tokens": 1654320,
+              "start_ts": "2026-10-05T09:12:00+00:00",
+              "end_ts": "2026-10-05T11:40:00+00:00"
+            }
+          ],
+          "activity_rhythm": {
+            "first_activity": "09:10",
+            "last_activity": "19:45",
+            "estimated_active_minutes": 465,
+            "activity_segments": [
+              {
+                "start": "09:10",
+                "end": "11:45",
+                "duration_min": 155
+              },
+              {
+                "start": "13:10",
+                "end": "15:45",
+                "duration_min": 155
+              },
+              {
+                "start": "17:10",
+                "end": "19:45",
+                "duration_min": 155
+              }
+            ],
+            "hourly_peaks": [
+              {
+                "hour": "09:00",
+                "events": 1
+              },
+              {
+                "hour": "11:00",
+                "events": 1
+              },
+              {
+                "hour": "13:00",
+                "events": 1
+              },
+              {
+                "hour": "15:00",
+                "events": 1
+              },
+              {
+                "hour": "17:00",
+                "events": 1
+              },
+              {
+                "hour": "19:00",
+                "events": 1
+              }
+            ],
+            "peak_concurrent_units": 1,
+            "total_events": 6,
+            "unique_sessions": 1,
+            "note": "AI活动推算，不等于真人实际工时"
+          }
+        },
+        "claude-code": {
+          "input_tokens": 92000,
+          "output_tokens": 38000,
+          "cache_tokens": 1180000,
+          "reasoning_tokens": 0,
+          "total_tokens": 1310000,
+          "record_units": 1,
+          "sessions": [
+            {
+              "id": "a1f2090b-3c4d-45e6-8f70-demo0000...",
+              "workspace": "data-pipeline",
+              "models": [
+                "claude-sonnet-4-6"
+              ],
+              "labels": [
+                "主会话",
+                "模式:default",
+                "3次API请求"
+              ],
+              "input_tokens": 92000,
+              "output_tokens": 38000,
+              "cache_tokens": 1180000,
+              "reasoning_tokens": 0,
+              "total_tokens": 1310000,
+              "start_ts": "2026-10-05T14:05:00+00:00",
+              "end_ts": "2026-10-05T18:22:00+00:00"
+            }
+          ],
+          "activity_rhythm": null
+        },
+        "cursor": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_tokens": 0,
+          "reasoning_tokens": 0,
+          "total_tokens": 0,
+          "record_units": 1,
+          "sessions": [
+            {
+              "id": "c0m9090-11aa-42bb-93cc-demo0000...",
+              "workspace": "cli-tool",
+              "models": [],
+              "labels": [
+                "主会话",
+                "模式:agent",
+                "+120/-48行",
+                "2文件变更",
+                "上下文:18%"
+              ],
+              "input_tokens": 0,
+              "output_tokens": 0,
+              "cache_tokens": 0,
+              "reasoning_tokens": 0,
+              "total_tokens": 0,
+              "start_ts": "2026-10-05T08:30:00+00:00",
+              "end_ts": "2026-10-05T09:15:00+00:00",
+              "token_status": "未适配/需要确认"
+            }
+          ],
+          "activity_rhythm": null
+        }
+      },
+      "combined_rhythm": {
+        "first_activity": "09:10",
+        "last_activity": "19:45",
+        "estimated_active_minutes": 465,
+        "activity_segments": [
+          {
+            "start": "09:10",
+            "end": "11:45",
+            "duration_min": 155
+          },
+          {
+            "start": "13:10",
+            "end": "15:45",
+            "duration_min": 155
+          },
+          {
+            "start": "17:10",
+            "end": "19:45",
+            "duration_min": 155
+          }
+        ],
+        "hourly_peaks": [
+          {
+            "hour": "09:00",
+            "events": 2
+          },
+          {
+            "hour": "11:00",
+            "events": 2
+          },
+          {
+            "hour": "13:00",
+            "events": 2
+          },
+          {
+            "hour": "15:00",
+            "events": 2
+          },
+          {
+            "hour": "17:00",
+            "events": 2
+          },
+          {
+            "hour": "19:00",
+            "events": 2
+          }
+        ],
+        "peak_concurrent_units": 3,
+        "total_events": 12,
+        "unique_sessions": 3,
+        "note": "AI活动推算，不等于真人实际工时"
+      }
+    },
+    {
+      "date": "2026-10-06",
+      "tools": {
+        "codex": {
+          "input_tokens": 360000,
+          "output_tokens": 48000,
+          "cache_tokens": 2900000,
+          "reasoning_tokens": 640,
+          "total_tokens": 3308640,
+          "record_units": 2,
+          "sessions": [
+            {
+              "id": "019e1004c-7a21-4f0e-9b3d-demo0000...",
+              "workspace": "my-web-app",
+              "models": [
+                "gpt-5.5"
+              ],
+              "labels": [
+                "2轮对话",
+                "工具调用"
+              ],
+              "input_tokens": 180000,
+              "output_tokens": 24000,
+              "cache_tokens": 1450000,
+              "reasoning_tokens": 320,
+              "total_tokens": 1654320,
+              "start_ts": "2026-10-06T09:12:00+00:00",
+              "end_ts": "2026-10-06T11:40:00+00:00"
+            },
+            {
+              "id": "019e1014c-7a21-4f0e-9b3d-demo0001...",
+              "workspace": "data-pipeline",
+              "models": [
+                "gpt-5.5"
+              ],
+              "labels": [
+                "3轮对话",
+                "工具调用"
+              ],
+              "input_tokens": 180000,
+              "output_tokens": 24000,
+              "cache_tokens": 1450000,
+              "reasoning_tokens": 320,
+              "total_tokens": 1654320,
+              "start_ts": "2026-10-06T09:12:00+00:00",
+              "end_ts": "2026-10-06T12:40:00+00:00"
+            }
+          ],
+          "activity_rhythm": {
+            "first_activity": "09:10",
+            "last_activity": "19:45",
+            "estimated_active_minutes": 465,
+            "activity_segments": [
+              {
+                "start": "09:10",
+                "end": "11:45",
+                "duration_min": 155
+              },
+              {
+                "start": "13:10",
+                "end": "15:45",
+                "duration_min": 155
+              },
+              {
+                "start": "17:10",
+                "end": "19:45",
+                "duration_min": 155
+              }
+            ],
+            "hourly_peaks": [
+              {
+                "hour": "09:00",
+                "events": 2
+              },
+              {
+                "hour": "11:00",
+                "events": 2
+              },
+              {
+                "hour": "13:00",
+                "events": 2
+              },
+              {
+                "hour": "15:00",
+                "events": 2
+              },
+              {
+                "hour": "17:00",
+                "events": 2
+              },
+              {
+                "hour": "19:00",
+                "events": 2
+              }
+            ],
+            "peak_concurrent_units": 2,
+            "total_events": 12,
+            "unique_sessions": 2,
+            "note": "AI活动推算，不等于真人实际工时"
+          }
+        },
+        "claude-code": {
+          "input_tokens": 92000,
+          "output_tokens": 38000,
+          "cache_tokens": 1180000,
+          "reasoning_tokens": 0,
+          "total_tokens": 1310000,
+          "record_units": 1,
+          "sessions": [
+            {
+              "id": "a1f2100b-3c4d-45e6-8f70-demo0000...",
+              "workspace": "notes",
+              "models": [
+                "claude-sonnet-4-6"
+              ],
+              "labels": [
+                "主会话",
+                "模式:default",
+                "3次API请求"
+              ],
+              "input_tokens": 92000,
+              "output_tokens": 38000,
+              "cache_tokens": 1180000,
+              "reasoning_tokens": 0,
+              "total_tokens": 1310000,
+              "start_ts": "2026-10-06T14:05:00+00:00",
+              "end_ts": "2026-10-06T18:22:00+00:00"
+            }
+          ],
+          "activity_rhythm": null
+        }
+      },
+      "combined_rhythm": {
+        "first_activity": "09:10",
+        "last_activity": "19:45",
+        "estimated_active_minutes": 465,
+        "activity_segments": [
+          {
+            "start": "09:10",
+            "end": "11:45",
+            "duration_min": 155
+          },
+          {
+            "start": "13:10",
+            "end": "15:45",
+            "duration_min": 155
+          },
+          {
+            "start": "17:10",
+            "end": "19:45",
+            "duration_min": 155
+          }
+        ],
+        "hourly_peaks": [
+          {
+            "hour": "09:00",
+            "events": 2
+          },
+          {
+            "hour": "11:00",
+            "events": 2
+          },
+          {
+            "hour": "13:00",
+            "events": 2
+          },
+          {
+            "hour": "15:00",
+            "events": 2
+          },
+          {
+            "hour": "17:00",
+            "events": 2
+          },
+          {
+            "hour": "19:00",
+            "events": 2
+          }
+        ],
+        "peak_concurrent_units": 3,
+        "total_events": 16,
+        "unique_sessions": 3,
+        "note": "AI活动推算，不等于真人实际工时"
+      }
+    },
+    {
+      "date": "2026-10-07",
+      "tools": {
+        "codex": {
+          "input_tokens": 180000,
+          "output_tokens": 24000,
+          "cache_tokens": 1450000,
+          "reasoning_tokens": 320,
+          "total_tokens": 1654320,
+          "record_units": 1,
+          "sessions": [
+            {
+              "id": "019e1104c-7a21-4f0e-9b3d-demo0000...",
+              "workspace": "data-pipeline",
+              "models": [
+                "gpt-5.5"
+              ],
+              "labels": [
+                "2轮对话",
+                "工具调用"
+              ],
+              "input_tokens": 180000,
+              "output_tokens": 24000,
+              "cache_tokens": 1450000,
+              "reasoning_tokens": 320,
+              "total_tokens": 1654320,
+              "start_ts": "2026-10-07T09:12:00+00:00",
+              "end_ts": "2026-10-07T11:40:00+00:00"
+            }
+          ],
+          "activity_rhythm": {
+            "first_activity": "09:10",
+            "last_activity": "19:45",
+            "estimated_active_minutes": 465,
+            "activity_segments": [
+              {
+                "start": "09:10",
+                "end": "11:45",
+                "duration_min": 155
+              },
+              {
+                "start": "13:10",
+                "end": "15:45",
+                "duration_min": 155
+              },
+              {
+                "start": "17:10",
+                "end": "19:45",
+                "duration_min": 155
+              }
+            ],
+            "hourly_peaks": [
+              {
+                "hour": "09:00",
+                "events": 1
+              },
+              {
+                "hour": "11:00",
+                "events": 1
+              },
+              {
+                "hour": "13:00",
+                "events": 1
+              },
+              {
+                "hour": "15:00",
+                "events": 1
+              },
+              {
+                "hour": "17:00",
+                "events": 1
+              },
+              {
+                "hour": "19:00",
+                "events": 1
+              }
+            ],
+            "peak_concurrent_units": 1,
+            "total_events": 6,
+            "unique_sessions": 1,
+            "note": "AI活动推算，不等于真人实际工时"
+          }
+        },
+        "claude-code": {
+          "input_tokens": 184000,
+          "output_tokens": 76000,
+          "cache_tokens": 2360000,
+          "reasoning_tokens": 0,
+          "total_tokens": 2620000,
+          "record_units": 2,
+          "sessions": [
+            {
+              "id": "a1f2110b-3c4d-45e6-8f70-demo0000...",
+              "workspace": "cli-tool",
+              "models": [
+                "claude-sonnet-4-6"
+              ],
+              "labels": [
+                "主会话",
+                "模式:default",
+                "3次API请求"
+              ],
+              "input_tokens": 92000,
+              "output_tokens": 38000,
+              "cache_tokens": 1180000,
+              "reasoning_tokens": 0,
+              "total_tokens": 1310000,
+              "start_ts": "2026-10-07T14:05:00+00:00",
+              "end_ts": "2026-10-07T18:22:00+00:00"
+            },
+            {
+              "id": "a1f2111b-3c4d-45e6-8f70-demo0001...",
+              "workspace": "docs-site",
+              "models": [
+                "claude-sonnet-4-6"
+              ],
+              "labels": [
+                "主会话",
+                "模式:default",
+                "4次API请求"
+              ],
+              "input_tokens": 92000,
+              "output_tokens": 38000,
+              "cache_tokens": 1180000,
+              "reasoning_tokens": 0,
+              "total_tokens": 1310000,
+              "start_ts": "2026-10-07T15:05:00+00:00",
+              "end_ts": "2026-10-07T19:22:00+00:00"
+            }
+          ],
+          "activity_rhythm": null
+        },
+        "cursor": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cache_tokens": 0,
+          "reasoning_tokens": 0,
+          "total_tokens": 0,
+          "record_units": 1,
+          "sessions": [
+            {
+              "id": "c0m9110-11aa-42bb-93cc-demo0000...",
+              "workspace": "my-web-app",
+              "models": [],
+              "labels": [
+                "主会话",
+                "模式:agent",
+                "+120/-48行",
+                "2文件变更",
+                "上下文:18%"
+              ],
+              "input_tokens": 0,
+              "output_tokens": 0,
+              "cache_tokens": 0,
+              "reasoning_tokens": 0,
+              "total_tokens": 0,
+              "start_ts": "2026-10-07T08:30:00+00:00",
+              "end_ts": "2026-10-07T09:15:00+00:00",
+              "token_status": "未适配/需要确认"
+            }
+          ],
+          "activity_rhythm": null
+        }
+      },
+      "combined_rhythm": {
+        "first_activity": "09:10",
+        "last_activity": "19:45",
+        "estimated_active_minutes": 465,
+        "activity_segments": [
+          {
+            "start": "09:10",
+            "end": "11:45",
+            "duration_min": 155
+          },
+          {
+            "start": "13:10",
+            "end": "15:45",
+            "duration_min": 155
+          },
+          {
+            "start": "17:10",
+            "end": "19:45",
+            "duration_min": 155
+          }
+        ],
+        "hourly_peaks": [
+          {
+            "hour": "09:00",
+            "events": 2
+          },
+          {
+            "hour": "11:00",
+            "events": 2
+          },
+          {
+            "hour": "13:00",
+            "events": 2
+          },
+          {
+            "hour": "15:00",
+            "events": 2
+          },
+          {
+            "hour": "17:00",
+            "events": 2
+          },
+          {
+            "hour": "19:00",
+            "events": 2
+          }
+        ],
+        "peak_concurrent_units": 3,
+        "total_events": 16,
+        "unique_sessions": 4,
+        "note": "AI活动推算，不等于真人实际工时"
+      }
+    },
+    {
+      "date": "2026-10-08",
+      "tools": {
+        "codex": {
+          "input_tokens": 180000,
+          "output_tokens": 24000,
+          "cache_tokens": 1450000,
+          "reasoning_tokens": 320,
+          "total_tokens": 1654320,
+          "record_units": 1,
+          "sessions": [
+            {
+              "id": "019e1204c-7a21-4f0e-9b3d-demo0000...",
+              "workspace": "notes",
+              "models": [
+                "gpt-5.5"
+              ],
+              "labels": [
+                "2轮对话",
+                "工具调用"
+              ],
+              "input_tokens": 180000,
+              "output_tokens": 24000,
+              "cache_tokens": 1450000,
+              "reasoning_tokens": 320,
+              "total_tokens": 1654320,
+              "start_ts": "2026-10-08T09:12:00+00:00",
+              "end_ts": "2026-10-08T11:40:00+00:00"
+            }
+          ],
+          "activity_rhythm": {
+            "first_activity": "09:10",
+            "last_activity": "19:45",
+            "estimated_active_minutes": 465,
+            "activity_segments": [
+              {
+                "start": "09:10",
+                "end": "11:45",
+                "duration_min": 155
+              },
+              {
+                "start": "13:10",
+                "end": "15:45",
+                "duration_min": 155
+              },
+              {
+                "start": "17:10",
+                "end": "19:45",
+                "duration_min": 155
+              }
+            ],
+            "hourly_peaks": [
+              {
+                "hour": "09:00",
+                "events": 1
+              },
+              {
+                "hour": "11:00",
+                "events": 1
+              },
+              {
+                "hour": "13:00",
+                "events": 1
+              },
+              {
+                "hour": "15:00",
+                "events": 1
+              },
+              {
+                "hour": "17:00",
+                "events": 1
+              },
+              {
+                "hour": "19:00",
+                "events": 1
+              }
+            ],
+            "peak_concurrent_units": 1,
+            "total_events": 6,
+            "unique_sessions": 1,
+            "note": "AI活动推算，不等于真人实际工时"
+          }
+        },
+        "claude-code": {
+          "input_tokens": 92000,
+          "output_tokens": 38000,
+          "cache_tokens": 1180000,
+          "reasoning_tokens": 0,
+          "total_tokens": 1310000,
+          "record_units": 1,
+          "sessions": [
+            {
+              "id": "a1f2120b-3c4d-45e6-8f70-demo0000...",
+              "workspace": "docs-site",
+              "models": [
+                "claude-sonnet-4-6"
+              ],
+              "labels": [
+                "主会话",
+                "模式:default",
+                "3次API请求"
+              ],
+              "input_tokens": 92000,
+              "output_tokens": 38000,
+              "cache_tokens": 1180000,
+              "reasoning_tokens": 0,
+              "total_tokens": 1310000,
+              "start_ts": "2026-10-08T14:05:00+00:00",
+              "end_ts": "2026-10-08T18:22:00+00:00"
+            }
+          ],
+          "activity_rhythm": null
+        }
+      },
+      "combined_rhythm": {
+        "first_activity": "09:10",
+        "last_activity": "19:45",
+        "estimated_active_minutes": 465,
+        "activity_segments": [
+          {
+            "start": "09:10",
+            "end": "11:45",
+            "duration_min": 155
+          },
+          {
+            "start": "13:10",
+            "end": "15:45",
+            "duration_min": 155
+          },
+          {
+            "start": "17:10",
+            "end": "19:45",
+            "duration_min": 155
+          }
+        ],
+        "hourly_peaks": [
+          {
+            "hour": "09:00",
+            "events": 1
+          },
+          {
+            "hour": "11:00",
+            "events": 1
+          },
+          {
+            "hour": "13:00",
+            "events": 1
+          },
+          {
+            "hour": "15:00",
+            "events": 1
+          },
+          {
+            "hour": "17:00",
+            "events": 1
+          },
+          {
+            "hour": "19:00",
+            "events": 1
+          }
+        ],
+        "peak_concurrent_units": 2,
+        "total_events": 10,
+        "unique_sessions": 2,
+        "note": "AI活动推算，不等于真人实际工时"
+      }
+    },
+    {
+      "date": "2026-10-09",
+      "tools": {
+        "codex": {
+          "input_tokens": 180000,
+          "output_tokens": 24000,
+          "cache_tokens": 1450000,
+          "reasoning_tokens": 320,
+          "total_tokens": 1654320,
+          "record_units": 1,
+          "sessions": [
+            {
+              "id": "019e1304c-7a21-4f0e-9b3d-demo0000...",
+              "workspace": "cli-tool",
+              "models": [
+                "gpt-5.5"
+              ],
+              "labels": [
+                "2轮对话",
+                "工具调用"
+              ],
+              "input_tokens": 180000,
+              "output_tokens": 24000,
+              "cache_tokens": 1450000,
+              "reasoning_tokens": 320,
+              "total_tokens": 1654320,
+              "start_ts": "2026-10-09T09:12:00+00:00",
+              "end_ts": "2026-10-09T11:40:00+00:00"
+            }
+          ],
+          "activity_rhythm": {
+            "first_activity": "09:10",
+            "last_activity": "19:45",
+            "estimated_active_minutes": 465,
+            "activity_segments": [
+              {
+                "start": "09:10",
+                "end": "11:45",
+                "duration_min": 155
+              },
+              {
+                "start": "13:10",
+                "end": "15:45",
+                "duration_min": 155
+              },
+              {
+                "start": "17:10",
+                "end": "19:45",
+                "duration_min": 155
+              }
+            ],
+            "hourly_peaks": [
+              {
+                "hour": "09:00",
+                "events": 1
+              },
+              {
+                "hour": "11:00",
+                "events": 1
+              },
+              {
+                "hour": "13:00",
+                "events": 1
+              },
+              {
+                "hour": "15:00",
+                "events": 1
+              },
+              {
+                "hour": "17:00",
+                "events": 1
+              },
+              {
+                "hour": "19:00",
+                "events": 1
+              }
+            ],
+            "peak_concurrent_units": 1,
+            "total_events": 6,
+            "unique_sessions": 1,
+            "note": "AI活动推算，不等于真人实际工时"
+          }
+        }
+      },
+      "combined_rhythm": {
+        "first_activity": "09:10",
+        "last_activity": "19:45",
+        "estimated_active_minutes": 465,
+        "activity_segments": [
+          {
+            "start": "09:10",
+            "end": "11:45",
+            "duration_min": 155
+          },
+          {
+            "start": "13:10",
+            "end": "15:45",
+            "duration_min": 155
+          },
+          {
+            "start": "17:10",
+            "end": "19:45",
+            "duration_min": 155
+          }
+        ],
+        "hourly_peaks": [
+          {
+            "hour": "09:00",
+            "events": 1
+          },
+          {
+            "hour": "11:00",
+            "events": 1
+          },
+          {
+            "hour": "13:00",
+            "events": 1
+          },
+          {
+            "hour": "15:00",
+            "events": 1
+          },
+          {
+            "hour": "17:00",
+            "events": 1
+          },
+          {
+            "hour": "19:00",
+            "events": 1
+          }
+        ],
+        "peak_concurrent_units": 1,
+        "total_events": 6,
+        "unique_sessions": 1,
+        "note": "AI活动推算，不等于真人实际工时"
+      }
+    }
+  ]
+}

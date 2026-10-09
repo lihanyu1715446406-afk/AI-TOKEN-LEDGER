@@ -1,0 +1,10 @@
+# 统一换行符。
+# 不加这个文件时，Windows 上的 core.autocrlf 会把工作区文件转成 CRLF，
+# 带 CRLF 的 run.sh 在 macOS / Linux 上会报 "bad interpreter: /bin/bash^M"。
+# 仓库内统一存 LF，仅在检出时对 Windows 原生脚本还原 CRLF。
+
+* text=auto eol=lf
+
+# Windows 原生脚本沿用 CRLF（依 .gitattributes 规则，后面的行覆盖前面的）
+*.bat text eol=crlf
+*.ps1 text eol=crlf
