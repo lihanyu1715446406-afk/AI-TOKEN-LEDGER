@@ -88,6 +88,41 @@ python sync_tokens.py --sample     # 输出 dashboard.sample.html
 
 解析的是各家工具**未公开的内部日志格式**,这些格式可能随工具更新而变化。如果某次升级后数据突然归零或报错,通常是字段改名了,改 `sync_tokens.py` 里对应的 `parse_*` 函数即可。
 
+## 网络问题（中国大陆用户）
+
+工具本身运行时**不需要网络**,但 `git clone` 和 `git push` 需要。直连 GitHub 常会遇到下面两种失败,症状完全不同,得对症下药:
+
+**症状一：完全没有响应,报 `Resolving timed out`**
+
+这是 DNS 就被拦了,连握手都到不了。需要让**终端**也走代理。先用浏览器确认你的代理工具本地端口(Clash 类默认 `7890`),再设置:
+
+```powershell
+# Windows PowerShell
+$env:HTTPS_PROXY = "http://127.0.0.1:7890"
+$env:HTTP_PROXY  = "http://127.0.0.1:7890"
+```
+
+```bash
+# macOS / Linux
+export HTTPS_PROXY=http://127.0.0.1:7890
+export HTTP_PROXY=http://127.0.0.1:7890
+```
+
+只对当前窗口有效,关掉即失效。
+
+**症状二：报 `schannel: failed to receive handshake, SSL/TLS connection failed`**
+
+网络通了,但 Git for Windows 默认的 schannel TLS 后端和代理配合不良。换成 OpenSSL 后端:
+
+```bash
+git config --global http.sslBackend openssl
+```
+
+**两个容易误判的地方**
+
+- 图形界面的浏览器会**自动跟随系统代理**,终端**不会**。所以"浏览器打得开 GitHub,命令行却不行"是正常现象,不是你的配置坏了。
+- 网上常见的建议是 `git config --global http.sslVerify false` 绕过报错。这等于关掉证书校验,会让代理链路上的中间人攻击无法被察觉,**不要用它来解决问题**。
+
 ## 文件说明
 
 ```
