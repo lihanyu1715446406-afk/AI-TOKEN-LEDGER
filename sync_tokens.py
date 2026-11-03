@@ -137,11 +137,12 @@ def extract_workspace_name(cwd):
 def parse_codex_sessions():
     """
     解析 Codex sessions JSONL。
-    返回: list of daily records + per-session details
+    返回: (dict of daily records, list of activity events)
     """
     files = find_codex_sessions()
     if not files:
-        return []
+        # 与另外两个 parse_* 保持同一契约：无数据时返回 (空字典, 空列表)
+        return {}, []
 
     all_token_events = []  # (timestamp, session_id, total_usage, last_usage, cwd, model)
     session_meta = {}       # session_id -> {cwd, origin, model, turn_count, labels}
@@ -380,7 +381,8 @@ def parse_claude_activity():
     """
     files = find_claude_sessions()
     if not files:
-        return [], []
+        # 与 parse_codex_sessions 保持同一契约：无数据时返回 (空字典, 空列表)
+        return {}, []
 
     all_activity = []
     daily_data = defaultdict(lambda: {
