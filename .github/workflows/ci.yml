@@ -17,6 +17,9 @@ jobs:
   test:
     name: ${{ matrix.os }} / Python ${{ matrix.python }}
     runs-on: ${{ matrix.os }}
+    env:
+      # Windows runner 的控制台默认 cp1252，中文直出会抛 UnicodeEncodeError
+      PYTHONUTF8: "1"
     strategy:
       fail-fast: false
       matrix:
@@ -39,9 +42,9 @@ jobs:
             python: "3.13"
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: ${{ matrix.python }}
 
@@ -75,9 +78,10 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          test -s data/usage.json || { echo "::error::未生成 data/usage.json"; exit 1; }
-          test -s dashboard.html || { echo "::error::未生成 dashboard.html"; exit 1; }
-          python -c "import json,pathlib;d=json.loads(pathlib.Path('data/usage.json').read_text(encoding='utf-8'));assert isinstance(d.get('daily'),list),'daily 应为列表';assert isinstance(d.get('tools'),dict),'tools 应为字典';print('usage.json OK:',len(d['daily']),'天 /',len(d['tools']),'个工具')"
+          test -s data/usage.json || { echo "::error::data/usage.json missing"; exit 1; }
+          test -s dashboard.html || { echo "::error::dashboard.html missing"; exit 1; }
+          # 断言信息保持 ASCII：Windows runner 的控制台编码不一定支持中文
+          python -c "import json,pathlib;d=json.loads(pathlib.Path('data/usage.json').read_text(encoding='utf-8'));assert isinstance(d.get('daily'),list),'daily must be a list';assert isinstance(d.get('tools'),dict),'tools must be a dict';print('usage.json OK:',len(d['daily']),'days,',len(d['tools']),'tools')"
 
       # 4. 隐私回归：脚本必须保持零网络调用
       - name: 校验零网络依赖
